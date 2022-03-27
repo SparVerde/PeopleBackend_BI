@@ -11,7 +11,14 @@ class Migrate extends CI_Controller
         $this->load->helper('url'); //elérési út miatt be kell tölteni
         //$this->load->library('session');
 		$this->input->is_cli_request() or exit('Migrations can only be run from CLI'); //csak parancsorból fogad el kérést a migration-ra
-		$this->load->library('migration'); // mindíg a seed legyen a magasabb sorszámú
+		$this->load->library('migrations'); // mindíg a seed legyen a magasabb sorszámú
+	}
+
+    public function index()
+	{
+		if ($this->migration->current() === FALSE) {
+			show_error($this->migration->error_string());
+		}
 	}
 
 	public function seed()

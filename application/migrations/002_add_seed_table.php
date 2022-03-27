@@ -18,14 +18,14 @@ class Migration_Seed_People_Table extends CI_Migration {
         $mailek = ['gmail.com', 'gmail.hu', 'freemail.hu', 'hotmail.com'];
 
 		for ($i=0; $i < 10; $i++) { 	
-			$fo = [
+			$people = [
                 "name" => $this->faker->name(),
 				//"name" => implode(", ", $this->faker->randomElements($vnevek)+ $this->faker->randomElements($knevek)),
-				"name" => $this->faker->email(),
+				"email" => $this->faker->email(),
                 //"email" => implode(", ", $this->faker->unique()->randomElements($vnevek) + $this->faker->randomElements($knevek)+"@"+$this->faker->randomElements($mailek)),
 				"age" => $this->faker->numberBetween(20, 80),
 			];
-			$this->db->insert('people', $fo);
+			$this->db->insert('people', $people);
 		}
 	}
 
